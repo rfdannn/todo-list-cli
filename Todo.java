@@ -33,12 +33,24 @@ public class Todo {
   }
 
   public void removeList(int idx) {
+    if (!validateIdx(idx)) {
+      System.out.println("Index invalid");
+      return;
+    }
     todoList.remove(todoList.get(idx - 1));
   }
 
   public void updateList(int idx, String updatedList) {
+    if (!validateIdx(idx)) {
+      System.out.println("Index invalid");
+      return;
+    }
     todoList.remove(todoList.get(idx - 1));
     todoList.add(idx - 1, updatedList);
+  }
+
+  private boolean validateIdx(int index) {
+    return index >= 1 && index < todoList.size();
   }
 
 }
